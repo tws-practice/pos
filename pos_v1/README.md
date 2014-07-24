@@ -56,10 +56,10 @@ POS收银机 版本：v1
    ```javascript
    {
       id: 1,
-      barcode: 'ITEM000000'
+      barcode: 'ITEM000000',
       name: '可口可乐',
       category: '饮料',
-      unit: '瓶'
+      unit: '瓶',
       price: 3.00
    }
    ```
