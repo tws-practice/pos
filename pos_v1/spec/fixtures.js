@@ -42,7 +42,7 @@ function loadAllItems() {
 function loadPromotions() {
     return [
         {
-            type: 'BY_TWO_GET_ONE_FREE',
+            type: 'BUY_TWO_GET_ONE_FREE',
             barcodes: [
                 'ITEM000000',
                 'ITEM000001',
