@@ -1,9 +1,7 @@
 describe('pos', function () {
-    var allItems;
     var inputs;
 
     beforeEach(function () {
-        allItems = loadAllItems();
         var inputs = [
             {
                 barcode: 'ITEM000000',
