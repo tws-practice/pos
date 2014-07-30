@@ -1,29 +1,18 @@
 describe('pos', function () {
+    var allItems;
     var inputs;
 
     beforeEach(function () {
-        var inputs = [
-            {
-                barcode: 'ITEM000000',
-                name: '可口可乐',
-                unit: '瓶',
-                price: 3.00,
-                count: 5
-            },
-            {
-                barcode: 'ITEM000001',
-                name: '雪碧',
-                unit: '瓶',
-                price: 3.00,
-                count: 2
-            },
-            {
-                barcode: 'ITEM000004',
-                name: '电池',
-                unit: '个',
-                price: 2.0,
-                count: 1
-            }
+        allItems = loadAllItems();
+        inputs = [
+            'ITEM000000',
+            'ITEM000000',
+            'ITEM000000',
+            'ITEM000000',
+            'ITEM000000',
+            'ITEM000001',
+            'ITEM000001',
+            'ITEM000004'
         ];
     });
 
@@ -39,7 +28,7 @@ describe('pos', function () {
             '名称：雪碧，数量：2瓶，单价：3.00(元)，小计：6.00(元)\n' +
             '名称：电池，数量：1个，单价：2.0(元)，小计：2(元)\n' +
             '----------------------\n' +
-            '总计：23.00(元)\n' +
+            '总计：37.50(元)\n' +
             '**********************';
 
           expect(console.log).toHaveBeenCalledWith(expectText);
