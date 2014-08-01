@@ -81,7 +81,7 @@ POS收银机 版本：v1
    ```javascript
    [
       {
-        type: 'BY_TWO_GET_ONE_FREE',
+        type: 'BUY_TWO_GET_ONE_FREE',
         barcodes: [
           'ITEM000000',
           'ITEM000001'
