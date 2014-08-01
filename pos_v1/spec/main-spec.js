@@ -21,7 +21,7 @@ describe('pos', function () {
 
         spyOn(console, 'log');
 
-        printInventory();
+        printInventory(inputs);
 
         var expectText =
             '***<没钱赚商店>购物清单***\n' +
