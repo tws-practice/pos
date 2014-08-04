@@ -1,5 +1,5 @@
 describe('pos', function () {
-    var allItems, inputs, formatTimeNum;
+    var allItems, inputs, dateDigitToString;
 
     beforeEach(function () {
         allItems = loadAllItems();
@@ -14,7 +14,7 @@ describe('pos', function () {
             'ITEM000005',
             'ITEM000005'
         ];
-        formatTimeNum = function (num) {
+        dateDigitToString = function (num) {
             return num < 10 ? '0' + num : num;
         };
     });
@@ -26,12 +26,12 @@ describe('pos', function () {
         printInventory(inputs);
 
         var currentDate = new Date(),
-            year = currentDate.getFullYear(),
-            month = currentDate.getMonth() + 1,
-            date = currentDate.getDate(),
-            hour = formatTimeNum(currentDate.getHours()),
-            minute = formatTimeNum(currentDate.getMinutes()),
-            second = formatTimeNum(currentDate.getSeconds()),
+            year = dateDigitToString(currentDate.getFullYear()),
+            month = dateDigitToString(currentDate.getMonth() + 1),
+            date = dateDigitToString(currentDate.getDate()),
+            hour = dateDigitToString(currentDate.getHours()),
+            minute = dateDigitToString(currentDate.getMinutes()),
+            second = dateDigitToString(currentDate.getSeconds()),
             formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
 
         var expectText =
