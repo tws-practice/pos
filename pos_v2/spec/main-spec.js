@@ -1,6 +1,5 @@
 describe('pos', function () {
-    var allItems;
-    var inputs;
+    var allItems, inputs, formatTimeNum;
 
     beforeEach(function () {
         allItems = loadAllItems();
@@ -15,6 +14,9 @@ describe('pos', function () {
             'ITEM000005',
             'ITEM000005'
         ];
+        formatTimeNum = function (num) {
+            return num < 10 ? '0' + num : num;
+        };
     });
 
     it('should print correct text', function () {
@@ -23,8 +25,19 @@ describe('pos', function () {
 
         printInventory(inputs);
 
+        var currentDate = new Date(),
+            year = currentDate.getFullYear(),
+            month = currentDate.getMonth() + 1,
+            date = currentDate.getDate(),
+            hour = formatTimeNum(currentDate.getHours()),
+            minute = formatTimeNum(currentDate.getMinutes()),
+            second = formatTimeNum(currentDate.getSeconds()),
+            formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
+
         var expectText =
             '***<没钱赚商店>购物清单***\n' +
+            '打印时间：' + formattedDateString + '\n' +
+            '----------------------\n' +
             '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
             '名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)\n' +
             '名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)\n' +
@@ -37,6 +50,6 @@ describe('pos', function () {
             '节省：7.50(元)\n' +
             '**********************';
 
-          expect(console.log).toHaveBeenCalledWith(expectText);
+        expect(console.log).toHaveBeenCalledWith(expectText);
     });
 });
