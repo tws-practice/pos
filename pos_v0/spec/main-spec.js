@@ -2,7 +2,7 @@ describe('pos', function () {
     var inputs;
 
     beforeEach(function () {
-        var inputs = [
+        inputs = [
             {
                 barcode: 'ITEM000000',
                 name: '可口可乐',
