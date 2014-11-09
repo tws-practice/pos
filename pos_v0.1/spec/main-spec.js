@@ -52,7 +52,7 @@ describe('pos', function () {
                 unit: '个',
                 price: 2.00
             }
-        ]
+        ];
     });
 
     it('should print correct text', function () {

@@ -49,5 +49,5 @@ function loadPromotions() {
                 'ITEM000005'
             ]
         }
-    ]
+    ];
 }
