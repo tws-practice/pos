@@ -83,7 +83,7 @@ items:[
     </Presents>
     <Total>
         <Price>21.00</Price>
-        <Saved>4.00</Price>
+        <Saved>4.00</Saved>
         <CurrencyUnit>元</CurrencyUnit>
     </Total>
 </Receipt>
