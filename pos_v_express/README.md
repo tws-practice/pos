@@ -59,7 +59,7 @@ items:[
 
 ### Accept: application/xml
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Receipt name="发票" printDate="2014年08月04日 08:09:05" storeName="没钱赚商店">
     <ItemsInCart>
@@ -91,33 +91,33 @@ items:[
 
 ### Accept: application/json
 
-```
+```json
 {
-    name        :  "发票",
-    printDate   :  "2014年08月04日 08:09:05",
-    storeName   :  "没钱赚商店"
-    itemsInCart : [
-                    {
-                        name        : "可口可乐",
-                        count       : "3",
-                        countUnit   : "瓶",
-                        price       : "3.00",
-                        currencyUnit: "元",
-                        subTotal    : "6.00"
-                    }
-                  ],
-    presents    : [
-                    {
-                        name        : "可口可乐"
-                        count       : "1"
-                        countUnit   : "瓶"
-                    }
-                  ],
-    total       :  {
-                        price : "21.00",
-                        saved : "4.00",
-                        currencyUnit: "元"
-                   }
+  "name": "发票",
+  "printDate": "2014年08月04日 08:09:05",
+  "storeName": "没钱赚商店",
+  "itemsInCart": [
+    {
+      "name": "可口可乐",
+      "count": "3",
+      "countUnit": "瓶",
+      "price": "3.00",
+      "currencyUnit": "元",
+      "subTotal": "6.00"
+    }
+  ],
+  "presents": [
+    {
+      "name": "可口可乐",
+      "count": "1",
+      "countUnit": "瓶"
+    }
+  ],
+  "total": {
+    "price": "21.00",
+    "saved": "4.00",
+    "currencyUnit": "元"
+  }
 }
 ```
 
