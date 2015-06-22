@@ -58,7 +58,7 @@ POS收银机 版本：v2
 ## 作业要求
 
 1. 请尽可能的使用面向对象的思想；
-2. 根据```test/main-test.js```中的测试用例，在```main/main.js```文件中实现```printReceipt```函数，在```main/model```文件夹下创建所需要使用的对象文件并且在```SpecRunner.html```中引用，确保测试通过；
+2. 根据```test/main-test.js```中的测试用例，在```main/main.js```文件中实现```printReceipt```函数，在```main/model```文件夹下创建所需要使用的对象文件并且在```run.html```中引用，确保测试通过；
 3. 请在保证代码可读性的前提下，尽可能用最少的代码行数完成作业；
 4. 请将完成后的作业提交到自己的GitHub仓库下；
 5. 请保持良好的代码提交（Commit）习惯。
