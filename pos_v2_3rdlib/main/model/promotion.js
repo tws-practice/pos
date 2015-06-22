@@ -1,4 +1,4 @@
 function Promotion(type, barcodes) {
-    this.type = type;
-    this.barcodes = barcodes || [];
+  this.type = type;
+  this.barcodes = barcodes || [];
 }
