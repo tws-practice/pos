@@ -1,7 +1,7 @@
-describe('pos', function () {
+describe('pos', function() {
   var inputs;
 
-  beforeEach(function () {
+  beforeEach(function() {
     inputs = [
       {
         barcode: 'ITEM000000',
@@ -55,7 +55,7 @@ describe('pos', function () {
     ];
   });
 
-  it('should print correct text', function () {
+  it('should print correct text', function() {
 
     spyOn(console, 'log');
 

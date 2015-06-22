@@ -1,8 +1,8 @@
-describe('pos', function () {
+describe('pos', function() {
   var allItems;
   var inputs;
 
-  beforeEach(function () {
+  beforeEach(function() {
     allItems = loadAllItems();
     inputs = [
       'ITEM000000',
@@ -16,7 +16,7 @@ describe('pos', function () {
     ];
   });
 
-  it('should print correct text', function () {
+  it('should print correct text', function() {
 
     spyOn(console, 'log');
 

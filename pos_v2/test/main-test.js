@@ -1,7 +1,7 @@
-describe('pos', function () {
+describe('pos', function() {
   var allItems, inputs, dateDigitToString;
 
-  beforeEach(function () {
+  beforeEach(function() {
     allItems = loadAllItems();
     inputs = [
       'ITEM000001',
@@ -14,12 +14,12 @@ describe('pos', function () {
       'ITEM000005',
       'ITEM000005'
     ];
-    dateDigitToString = function (num) {
+    dateDigitToString = function(num) {
       return num < 10 ? '0' + num : num;
     };
   });
 
-  it('should print correct text', function () {
+  it('should print correct text', function() {
 
     spyOn(console, 'log');
 
