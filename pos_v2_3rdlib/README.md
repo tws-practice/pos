@@ -59,7 +59,7 @@ POS收银机 版本：v2
 ## 作业要求
 
 1. 请尽可能的使用面向对象的思想；
-2. 根据```spec/main-spec.js```中的测试用例，在```src/main.js```文件中实现```printInventory```函数，在```src/model```文件夹下创建所需要使用的对象文件并且在```SpecRunner.html```中引用，确保测试通过；
+2. 根据```test/main-test.js```中的测试用例，在```main/main.js```文件中实现```printInventory```函数，在```main/model```文件夹下创建所需要使用的对象文件并且在```SpecRunner.html```中引用，确保测试通过；
 3. 请在保证代码可读性的前提下，尽可能用最少的代码行数完成作业；
 4. 请将完成后的作业提交到自己的GitHub仓库下；
 5. 请保持良好的代码提交（Commit）习惯。
@@ -67,8 +67,8 @@ POS收银机 版本：v2
 ## 作业提示
 
 1. 可使用```loadAllItems()```方法获取全部的商品，该方法返回结果为一个包含了商品对象的数组；
-2. 每一个商品对象的结构请见```src/model/item.js```；
+2. 每一个商品对象的结构请见```main/model/item.js```；
 3. 可使用```loadPromotions()```方法获取全部的促销信息，该方法返回结果为一个包含有促销信息对象的数组；
-4. 每一个促销信息对象的结构请见```src/model/promotion.js```；
+4. 每一个促销信息对象的结构请见```main/model/promotion.js```；
 5. 应学习并善于使用各种流行浏览器所附带的开发人员工具中的控制台（Console）功能；
 6. 有关于[Lo-Dash](http://lodash.com)和[moment.js](http://momentjs.com)的使用方法，请查阅各自官方网站。
