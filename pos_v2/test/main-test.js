@@ -23,7 +23,7 @@ describe('pos', function () {
 
         spyOn(console, 'log');
 
-        printInvoice(inputs);
+        printReceipt(inputs);
 
         var currentDate = new Date(),
             year = dateDigitToString(currentDate.getFullYear()),
@@ -35,7 +35,7 @@ describe('pos', function () {
             formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
 
         var expectText =
-            '***<没钱赚商店>发票***\n' +
+            '***<没钱赚商店>收据***\n' +
             '打印时间：' + formattedDateString + '\n' +
             '----------------------\n' +
             '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
