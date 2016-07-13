@@ -1,11 +1,9 @@
 'use strict';
 
 describe('pos', () => {
-  let allItems;
   let inputs;
 
   beforeEach(() => {
-    allItems = loadAllItems();
     inputs = [
       'ITEM000001',
       'ITEM000001',

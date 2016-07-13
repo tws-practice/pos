@@ -1,10 +1,9 @@
 'use strict';
 
 describe('pos', () => {
-  let allItems, inputs, dateDigitToString;
+  let inputs, dateDigitToString;
 
   beforeEach(() => {
-    allItems = loadAllItems();
     inputs = [
       'ITEM000001',
       'ITEM000001',
