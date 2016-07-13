@@ -6,7 +6,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "eslint . -c twa-camp-2016 --no-eslintrc"
+    "lint": "eslint . -c twa-camp-2016 --no-eslintrc || true"
   },
   "devDependencies": {
     "eslint": "^3.0.1",
