@@ -1,6 +1,5 @@
 'use strict';
 
-//TODO: Please write code in this file.
 function printReceipt(inputs) {
-
+  console.log('请在此实现练习要求，并改写该行代码。');
 }
