@@ -1,6 +1,8 @@
 'use strict';
 
-function Promotion(type, barcodes) {
-  this.type = type;
-  this.barcodes = barcodes || [];
+class Promotion {
+  constructor(type, barcodes = []) {
+    this.type = type;
+    this.barcodes = barcodes;
+  }
 }

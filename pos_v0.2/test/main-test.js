@@ -1,8 +1,7 @@
 'use strict';
 
 describe('pos', () => {
-  let allItems;
-  let inputs;
+  let allItems, inputs;
 
   beforeEach(() => {
     allItems = loadAllItems();
