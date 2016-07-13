@@ -1,3 +1,5 @@
+'use strict';
+
 describe('pos', function() {
   var allItems;
   var inputs;

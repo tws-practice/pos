@@ -1,3 +1,5 @@
+'use strict';
+
 function loadAllItems() {
   return [
     new Item('ITEM000000', '可口可乐', '瓶', 3.00),
