@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let inputs;
 
-  beforeEach(() => {
-    inputs = [
+  it('should print text', () => {
+
+    const inputs = [
       'ITEM000000',
       'ITEM000000',
       'ITEM000000',
@@ -14,9 +14,6 @@ describe('pos', () => {
       'ITEM000001',
       'ITEM000004'
     ];
-  });
-
-  it('should print text', () => {
 
     spyOn(console, 'log');
 

@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let inputs;
 
-  beforeEach(() => {
-    inputs = [
+  it('should print text', () => {
+
+    const inputs = [
       {
         barcode: 'ITEM000000',
         name: '可口可乐',
@@ -27,9 +27,6 @@ describe('pos', () => {
         count: 1
       }
     ];
-  });
-
-  it('should print text', () => {
 
     spyOn(console, 'log');
 

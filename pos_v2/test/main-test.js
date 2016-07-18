@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let tags, dateDigitToString;
 
-  beforeEach(() => {
-    tags = [
+  it('should print text', () => {
+
+    const tags = [
       'ITEM000001',
       'ITEM000001',
       'ITEM000001',
@@ -15,10 +15,8 @@ describe('pos', () => {
       'ITEM000005',
       'ITEM000005'
     ];
-    dateDigitToString = num => num < 10 ? `0${num}` : num;
-  });
 
-  it('should print text', () => {
+    const dateDigitToString = num => num < 10 ? `0${num}` : num;
 
     spyOn(console, 'log');
 

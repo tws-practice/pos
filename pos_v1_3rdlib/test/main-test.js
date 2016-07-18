@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let tags;
 
-  beforeEach(() => {
-    tags = [
+  it('should print text', () => {
+
+    const tags = [
       'ITEM000001',
       'ITEM000001',
       'ITEM000001',
@@ -15,9 +15,6 @@ describe('pos', () => {
       'ITEM000005',
       'ITEM000005'
     ];
-  });
-
-  it('should print text', () => {
 
     spyOn(console, 'log');
 
@@ -34,4 +31,5 @@ describe('pos', () => {
 
     expect(console.log).toHaveBeenCalledWith(expectText);
   });
-});
+})
+;
