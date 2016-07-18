@@ -16,7 +16,7 @@ describe('pos', () => {
     ];
   });
 
-  it('should print correct text', () => {
+  it('should print text', () => {
 
     spyOn(console, 'log');
 

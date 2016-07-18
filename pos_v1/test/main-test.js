@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let inputs;
+  let tags;
 
   beforeEach(() => {
-    inputs = [
+    tags = [
       'ITEM000001',
       'ITEM000001',
       'ITEM000001',
@@ -17,11 +17,11 @@ describe('pos', () => {
     ];
   });
 
-  it('should print correct text', () => {
+  it('should print text', () => {
 
     spyOn(console, 'log');
 
-    printReceipt(inputs);
+    printReceipt(tags);
 
     const expectText = `***<没钱赚商店>收据***
 名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)

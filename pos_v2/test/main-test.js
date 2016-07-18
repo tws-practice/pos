@@ -1,10 +1,10 @@
 'use strict';
 
 describe('pos', () => {
-  let inputs, dateDigitToString;
+  let tags, dateDigitToString;
 
   beforeEach(() => {
-    inputs = [
+    tags = [
       'ITEM000001',
       'ITEM000001',
       'ITEM000001',
@@ -18,11 +18,11 @@ describe('pos', () => {
     dateDigitToString = num => num < 10 ? `0${num}` : num;
   });
 
-  it('should print correct text', () => {
+  it('should print text', () => {
 
     spyOn(console, 'log');
 
-    printReceipt(inputs);
+    printReceipt(tags);
 
     const currentDate = new Date(),
       year = dateDigitToString(currentDate.getFullYear()),
