@@ -16,7 +16,7 @@ describe('pos', () => {
       'ITEM000005'
     ];
 
-    const dateDigitToString = num => num < 10 ? `0${num}` : num;
+    const dateDigitToString = num => (num < 10 ? `0${num}` : num);
 
     spyOn(console, 'log');
 
