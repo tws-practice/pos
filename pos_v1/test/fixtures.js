@@ -50,6 +50,12 @@ function loadPromotions() {
         'ITEM000001',
         'ITEM000005'
       ]
+    },
+    {
+      type: 'EIGHTY_FIVE_PERCENT_DISCOUNT',
+      barcodes: [
+        'ITEM000002',
+      ]
     }
   ];
 }
