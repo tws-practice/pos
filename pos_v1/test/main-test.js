@@ -15,7 +15,7 @@ describe('pos', () => {
       'ITEM000005-2',
     ];
 
-    spyOn(console, 'log');
+   spyOn(console, 'log');
 
     printReceipt(tags);
 
@@ -28,6 +28,6 @@ describe('pos', () => {
 节省：7.50(元)
 **********************`;
 
-    expect(console.log).toHaveBeenCalledWith(expectText);
+   expect(console.log).toHaveBeenCalledWith(expectText);
   });
 });
