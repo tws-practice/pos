@@ -68,40 +68,40 @@ function getItems(allGoodItems, codeAndNumObject) {
   return tagsItem;
 }
 
-function getItemsPreSum(tagsItem1) {
+function getItemsPreSum(buyGoodsList) {
   let sum = 0.00;
-  for (let i = 0; i < tagsItem1.length; i++) {
-    sum += tagsItem1[i].price * tagsItem1[i].num;
+  for (let i = 0; i < buyGoodsList.length; i++) {
+    sum += buyGoodsList[i].price * buyGoodsList[i].num;
   }
   return sum;
 }
 
 
 //查找对应商品信息
-function getItemsInfo(tagsItem1, promotion) {
+function getItemsInfo(buyGoodsList, promotion) {
   let sum = 0.00;
-  for (let i = 0; i < tagsItem1.length; i++) {
-    let ponum = tagsItem1[i].num;
-    let flag = 0;
-    for (let j = 0; j < promotion.length && flag === 0; j++) {
-      if (promotion[j] === tagsItem1[i].barcode) {
-        flag = 1;
+  for (let i = 0; i < buyGoodsList.length; i++) {
+    let ponum = buyGoodsList[i].num;
+    let hasCodeflag = false;
+    for (let j = 0; j < promotion.length ; j++) {
+      if (promotion[j] === buyGoodsList[i].barcode) {
+        hasCodeflag = true;
+        break;
       }
-
     }
-    if (tagsItem1[i].num > 2 && flag) {
-      ponum = tagsItem1[i].num - 1;
+    if (hasCodeflag) {
+      ponum = buyGoodsList[i].num-Math.floor(buyGoodsList[i].num/3);
     }
-    tagsItem1[i].sum = tagsItem1[i].price * ponum;
+    buyGoodsList[i].sum = buyGoodsList[i].price * ponum;
   }
-  return tagsItem1;
+  return buyGoodsList;
 }
 
 //获取商品优惠总价
-function getItemsPoSum(tagsItem1) {
+function getItemsPoSum(buyGoodsList) {
   let sum = 0.00;
-  for (let i = 0; i < tagsItem1.length; i++) {
-    sum += tagsItem1[i].sum;
+  for (let i = 0; i < buyGoodsList.length; i++) {
+    sum += buyGoodsList[i].sum;
   }
   return sum;
 }
