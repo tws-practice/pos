@@ -4,9 +4,9 @@ function printReceipt(tags) {
   //计算数量
   let typeAndNumberOfItems = calculatingTypeAndNumber(tags);
   const allItems = loadAllItems();
-  const itemsDetails = getItemsDetails(typeAndNumberOfItems, allItems);
-  const loadPromotion = loadPromotions();
-  typeAndNumberOfItems = getPromotion(typeAndNumberOfItems, loadPromotion);
+  let itemsDetails = getItemsDetails(typeAndNumberOfItems, allItems);
+  const promotions = loadPromotions();
+  itemsDetails = getPromotion(itemsDetails, promotions);
   typeAndNumberOfItems = countKind(typeAndNumberOfItems);
   typeAndNumberOfItems = countAll(typeAndNumberOfItems);
   const final = print(typeAndNumberOfItems);
@@ -35,7 +35,7 @@ function getItemsDetails(typeAndNumberOfItems, allItems) {
   // for(let det of deatil)
   for (let typeAndNumberOfItem of typeAndNumberOfItems) {
     for (let item of allItems) {
-      if (typeAndNumberOfItem.code == item.barcode) {
+      if (typeAndNumberOfItem.code === item.barcode) {
         typeAndNumberOfItem.name = item.name;
         typeAndNumberOfItem.unit = item.unit;
         typeAndNumberOfItem.price = item.price;
@@ -45,17 +45,17 @@ function getItemsDetails(typeAndNumberOfItems, allItems) {
   return typeAndNumberOfItems;
 }
 
-function getPromotion(item, loadPromotion) {
-  let barcode = loadPromotion[0].barcodes;
-  for (let tempitem of item) {
+function getPromotion(itemsDetails, Promotions) {
+  let barcode = Promotions[0].barcodes;
+  for (let tempitem of itemsDetails) {
     for (let i = 0; i < barcode.length; i++) {
-      if (tempitem.code == barcode[i]) {
+      if (tempitem.code === barcode[i]) {
         tempitem.status = 'Promotion';
 
       }
     }
   }
-  return item;
+  return itemsDetails;
 }
 
 function countKind(item) {
