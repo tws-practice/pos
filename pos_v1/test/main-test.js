@@ -58,3 +58,57 @@ describe('BuildCodeAndNumArray check', () => {
   });
 });
 
+
+describe('getReceiptArray check', () => {
+
+  it('check return getReceiptArray', () => {
+
+    const allGoodItemArray = [
+      {
+        barcode: 'ITEM000000',
+        name: '可口可乐',
+        unit: '瓶',
+        price: 3.00
+      },
+      {
+        barcode: 'ITEM000001',
+        name: '雪碧',
+        unit: '瓶',
+        price: 3.00
+      },
+      {
+        barcode: 'ITEM000002',
+        name: '苹果',
+        unit: '斤',
+        price: 5.50
+      },
+      {
+        barcode: 'ITEM000003',
+        name: '荔枝',
+        unit: '斤',
+        price: 15.00
+      },
+      {
+        barcode: 'ITEM000004',
+        name: '电池',
+        unit: '个',
+        price: 2.00
+      },
+      {
+        barcode: 'ITEM000005',
+        name: '方便面',
+        unit: '袋',
+        price: 4.50
+      }
+    ];
+    const recieptArrayCheck =[{barcode:'ITEM000001',name:'雪碧',unit:'瓶',price:3,num:5},{barcode:'ITEM000003',name:'荔枝',
+      unit:'斤',price:15,num:2.5},{barcode:'ITEM000005',name:'方便面',unit:'袋',price:4.5,num:3}];
+    const codeAndNumArray =[{code:'ITEM000001',num:5},{code:'ITEM000003',num:2.5},{code:'ITEM000005',num:3}];
+    spyOn(console, 'log');
+
+    let recieptArray = getReceiptArray(allGoodItemArray, codeAndNumArray);
+    let recieptArrayToJson = JSON.stringify(recieptArray);
+    expect(JSON.stringify(recieptArrayCheck)).toBe(recieptArrayToJson);
+  });
+});
+

@@ -6,7 +6,9 @@ function printReceipt(buyGoodsList) {
   let promotion = loadPromotions()[0].barcodes;
 
   let codeAndNumArray = BuildCodeAndNumArray(buyGoodsList);
+  alert(JSON.stringify(codeAndNumArray));
   let recieptArray = getReceiptArray(allGoodItemArray, codeAndNumArray);
+  alert(JSON.stringify(recieptArray));
   let noDiscountTotalPrice = getReceiptPreSum(recieptArray);
   recieptArray = getReceiptInfo(recieptArray, promotion);
   let discountTotalPrice = getReceiptPoSum(recieptArray);
