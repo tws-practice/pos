@@ -1,6 +1,6 @@
 # POS Project v1
 
-fix_b111111
+fix_b222222
 
 POS收银机 版本：v1
 
