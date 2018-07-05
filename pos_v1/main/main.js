@@ -9,8 +9,8 @@ function printReceipt(tags) {
   itemsDetails = getPromotion(itemsDetails, promotions);
   itemsDetails = countItem(itemsDetails);
   itemsDetails = countAllItems(itemsDetails);
-  const final = print(itemsDetails);
-  console.log(final);
+   print(itemsDetails);
+
 }
 
 //计算数量
@@ -100,7 +100,7 @@ function print(item) {
   final = final + '**********************';
 
   final = `${final}`;
-  return final;
+  console.log(final);
 }
 
 
