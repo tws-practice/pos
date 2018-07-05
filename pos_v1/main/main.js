@@ -7,9 +7,9 @@ function printReceipt(tags) {
   let itemsDetails = getItemsDetails(typeAndNumberOfItems, allItems);
   const promotions = loadPromotions();
   itemsDetails = getPromotion(itemsDetails, promotions);
-  typeAndNumberOfItems = countKind(typeAndNumberOfItems);
-  typeAndNumberOfItems = countAll(typeAndNumberOfItems);
-  const final = print(typeAndNumberOfItems);
+  itemsDetails = countItem(itemsDetails);
+  itemsDetails = countAll(itemsDetails);
+  const final = print(itemsDetails);
   console.log(final);
 }
 
@@ -58,8 +58,8 @@ function getPromotion(itemsDetails, Promotions) {
   return itemsDetails;
 }
 
-function countKind(item) {
-  for (let it of item) {
+function countItem(itemsDetails) {
+  for (let it of itemsDetails) {
     let mycount;
     if (it.hasOwnProperty('status')) {
       mycount = (parseInt(it.number / 3) * 2 + it.number % 3) * it.price;
@@ -70,22 +70,22 @@ function countKind(item) {
       it.count = mycount;
     }
   }
-  return item;
+  return itemsDetails;
 }
 
-function countAll(item) {
+function countAll(itemsDetails) {
   let count = 0;
   let countfa = 0;
-  for (let it of item) {
+  for (let it of itemsDetails) {
     count = count + it.count;
     countfa = it.number * it.price + countfa;
   }
 
-  item.push({
+  itemsDetails.push({
     finalcount: count,
     finalcon: countfa - count
   })
-  return item;
+  return itemsDetails;
 }
 
 
