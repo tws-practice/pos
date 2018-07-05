@@ -1,19 +1,17 @@
 'use strict';
 
-function printReceipt(tags) {
-
-  let codeAndNum1 = getCodeAndNum(tags);
-  let itemInfo = loadAllItems();
-  let tagsItem1 = getItems(itemInfo, codeAndNum1);
-  let sum = getItemsPreSum(tagsItem1);
+function printReceipt(buyGoodsList) {
+  let allGoodItemArray = loadAllItems();
   let promotion = loadPromotions()[0].barcodes;
-  let presum = getItemsPreSum(tagsItem1, promotion);
-  tagsItem1 = getItemsInfo(tagsItem1, promotion);
-  let posum = getItemsPoSum(tagsItem1);
+  let codeAndNumArray = BuildCodeAndNumArray(buyGoodsList);
+  let tagsItem = getItems(allGoodItemArray, codeAndNumArray);
+  let presum = getItemsPreSum(tagsItem);
+  tagsItem = getItemsInfo(tagsItem, promotion);
+  let posum = getItemsPoSum(tagsItem);
   let cutsum = presum - posum;
   let content = '';
-  for (let i = 0; i < tagsItem1.length; i++) {
-    content += '名称：' + tagsItem1[i].name + '，数量：' + tagsItem1[i].num + tagsItem1[i].unit + '，单价：' + tagsItem1[i].price.toFixed(2) + '(元)，小计：' + tagsItem1[i].sum.toFixed(2) + '(元)\n'
+  for (let i = 0; i < tagsItem.length; i++) {
+    content += '名称：' + tagsItem[i].name + '，数量：' + tagsItem[i].num + tagsItem[i].unit + '，单价：' + tagsItem[i].price.toFixed(2) + '(元)，小计：' + tagsItem[i].sum.toFixed(2) + '(元)\n'
   }
   console.log('***<没钱赚商店>收据***\n' +
     content +
@@ -25,46 +23,46 @@ function printReceipt(tags) {
 }
 
 //获取商品数量
-function getCodeAndNum(tags) {
-  let codeAndNum = [];
-  for (let i = 0; i < tags.length; i++) {
-    let num = 1.00;
-    let flag = 0;
-    let code = tags[i];
-    let index = tags[i].indexOf('-');
-    if (index !== -1) {
-      code = tags[i].substring(0, index);
-      num = parseFloat(tags[i].substring(index + 1, tags[i].length));
-      console.log(num);
+function BuildCodeAndNumArray(buyGoodsList) {
+  let codeAndNumArray = [];
+  for (let i = 0; i < buyGoodsList.length; i++) {
+    let codeAndNumObject = {code: buyGoodsList[i], num: 1.00};
+    let hasCodeFlag = false;
+    if (buyGoodsList[i].indexOf('-') !== -1) {
+      let codeSplit = buyGoodsList[i].split('-');
+      codeAndNumObject.code = codeSplit[0];
+      codeAndNumObject.num = parseFloat(codeSplit[1]);
     }
-    for (let j = 0; j < codeAndNum.length && flag === 0; j++) {
-      let k = codeAndNum[j].code;
-      if (k === code) {
-        flag = 1;
-        codeAndNum[j].num += num;
+    for (let j = 0; j < codeAndNumArray.length; j++) {
+      if (codeAndNumArray[j].code === codeAndNumObject.code) {
+        hasCodeFlag = true;
+        codeAndNumArray[j].num += codeAndNumObject.num;
+        break;
       }
     }
-    if (flag === 0) {
-      codeAndNum.push({code: code, num: num});
+    if (!hasCodeFlag) {
+      codeAndNumArray.push(codeAndNumObject);
     }
   }
-  return codeAndNum;
+  return codeAndNumArray;
 }
 
 //获得各商品信息
-function getItems(items, codeAndNum) {
+function getItems(allGoodItems, codeAndNumObject) {
   let tagsItem = [];
-  for (let i = 0; i < items.length; i++) {
-    for (let j = 0; j < codeAndNum.length; j++) {
-      if (items[i].barcode === codeAndNum[j].code) {
-        tagsItem.push({
-          barcode: codeAndNum[j].code,
-          name: items[i].name,
-          unit: items[i].unit,
-          price: items[i].price,
-          num: codeAndNum[j].num
-        })
-      }
+  for (let i = 0; i < allGoodItems.length; i++) {
+    for (let j = 0; j < codeAndNumObject.length; j++) {
+      if (allGoodItems[i].barcode !== codeAndNumObject[j].code) continue;
+      const {name, unit, price} = allGoodItems[i];
+      const {code, num} = codeAndNumObject[j];
+      tagsItem.push({
+        barcode: code,
+        name: name,
+        unit: unit,
+        price: price,
+        num: num
+      })
+
     }
   }
   return tagsItem;
