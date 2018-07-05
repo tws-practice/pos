@@ -1,56 +1,56 @@
 'use strict';
 
-function  printReceipt(tags){
+function printReceipt(tags) {
   //计算数量
-    var item= count(tags);
-    const  deatil=loadAllItems();
-    item=getDeatil(item,deatil);
-    const loadPromotion=loadPromotions();
-    item=getPromotion(item,loadPromotion);
-    item=  countKind(item);
-    item= countAll(item);
-   const final=print(item);
-    console.log(final);
+  let typeAndNumberOfItems = calculatingTypeAndNumber(tags);
+  const deatil = loadAllItems();
+  typeAndNumberOfItems = getDeatil(typeAndNumberOfItems, deatil);
+  const loadPromotion = loadPromotions();
+  typeAndNumberOfItems = getPromotion(typeAndNumberOfItems, loadPromotion);
+  typeAndNumberOfItems = countKind(typeAndNumberOfItems);
+  typeAndNumberOfItems = countAll(typeAndNumberOfItems);
+  const final = print(typeAndNumberOfItems);
+  console.log(final);
 }
 
 //计算数量
-function count(tags) {
+function calculatingTypeAndNumber(tags) {
 
-  let itemCount=[];
+  let typeAndNumberOfItems = [];
 
-  for(let id of tags){
-    let tempId= splitItem(id);
-    let Iscontain=contain(tempId,itemCount);
-    if(!Iscontain){
-      itemCount.push({
+  for (let barcode of tags) {
+    let tempId = splitItem(barcode);
+    let Iscontain = containId(tempId, typeAndNumberOfItems);
+    if (!Iscontain) {
+      typeAndNumberOfItems.push({
         code: tempId.code,
         number: tempId.number
-      })
+      });
     }
-
   }
-  return itemCount;
+  return typeAndNumberOfItems;
 }
-function getDeatil(item,deatil) {
+
+function getDeatil(item, deatil) {
   // for(let det of deatil)
   for (let tempitem of item) {
-    for(let det of deatil){
-      if(tempitem.code==det.barcode){
-        tempitem.name=det.name;
-        tempitem.unit=det.unit;
-        tempitem.price=det.price;
+    for (let det of deatil) {
+      if (tempitem.code == det.barcode) {
+        tempitem.name = det.name;
+        tempitem.unit = det.unit;
+        tempitem.price = det.price;
       }
     }
   }
   return item;
 }
 
-function  getPromotion(item,loadPromotion) {
- let barcode= loadPromotion[0].barcodes;
+function getPromotion(item, loadPromotion) {
+  let barcode = loadPromotion[0].barcodes;
   for (let tempitem of item) {
-    for(let i=0;i<barcode.length;i++){
-      if(tempitem.code==barcode[i]){
-        tempitem.status='Promotion';
+    for (let i = 0; i < barcode.length; i++) {
+      if (tempitem.code == barcode[i]) {
+        tempitem.status = 'Promotion';
 
       }
     }
@@ -59,75 +59,77 @@ function  getPromotion(item,loadPromotion) {
 }
 
 function countKind(item) {
-  for(let it of item){
+  for (let it of item) {
     let mycount;
-    if(it.hasOwnProperty('status')){
-      mycount =(parseInt(it.number/3)*2+it.number%3)*it.price;
-      it.count=mycount;
+    if (it.hasOwnProperty('status')) {
+      mycount = (parseInt(it.number / 3) * 2 + it.number % 3) * it.price;
+      it.count = mycount;
     }
-    else{
-      mycount=it.number*it.price;
-      it.count=mycount;
+    else {
+      mycount = it.number * it.price;
+      it.count = mycount;
     }
   }
   return item;
 }
 
-function  countAll(item) {
-  let count=0 ;
-  let countfa=0;
-  for(let it of item){
-   count=count+it.count;
-    countfa=it.number*it.price+countfa;
+function countAll(item) {
+  let count = 0;
+  let countfa = 0;
+  for (let it of item) {
+    count = count + it.count;
+    countfa = it.number * it.price + countfa;
   }
 
   item.push({
     finalcount: count,
-    finalcon: countfa-count
+    finalcon: countfa - count
   })
   return item;
 }
 
 
-function  print(item) {
-  let final='***<没钱赚商店>收据***\n';
-  for(let i=0;i<item.length-1;i++){
-    final=final+'名称：'+item[i].name+'，数量：'+item[i].number+''+item[i].unit+'，单价：'+parseFloat(item[i].price).toFixed(2)+'(元)，小计：'+parseFloat(item[i].count).toFixed(2)+'(元)'+'\n';
+function print(item) {
+  let final = '***<没钱赚商店>收据***\n';
+  for (let i = 0; i < item.length - 1; i++) {
+    final = final + '名称：' + item[i].name + '，数量：' + item[i].number + '' + item[i].unit + '，单价：' + parseFloat(item[i].price).toFixed(2) + '(元)，小计：' + parseFloat(item[i].count).toFixed(2) + '(元)' + '\n';
   }
-  final=final+'----------------------\n';
-  final=final+'总计：'+parseFloat(item[item.length-1].finalcount).toFixed(2)+'(元)'+'\n';
-  final=final+'节省：'+item[item.length-1].finalcon.toFixed(2)+'(元)'+'\n';
-  final=final+'**********************';
-;
-final=`${final}`;
-return final;
+  final = final + '----------------------\n';
+  final = final + '总计：' + parseFloat(item[item.length - 1].finalcount).toFixed(2) + '(元)' + '\n';
+  final = final + '节省：' + item[item.length - 1].finalcon.toFixed(2) + '(元)' + '\n';
+  final = final + '**********************';
+
+  final = `${final}`;
+  return final;
 }
 
 
-function splitItem(id) {
-  let tempId={};
-  if(id.indexOf('-')>=0){
-      tempId={
-       code : id.split('-')[0],
-       number : parseFloat(id.split('-')[1])
-     }
+function splitItem(barcode) {
+  let tempId = {};
+  if (barcode.indexOf('-') >= 0) {
+    tempId = {
+      code: barcode.split('-')[0],
+      number: parseFloat(barcode.split('-')[1])
+    }
   }
-  else{
-    tempId={code : id,
-      number : 1}
+  else {
+    tempId = {
+      code: barcode,
+      number: 1
+    }
   }
   return tempId;
 }
 
-function  contain(tempId,itemCount) {
-  if(itemCount.length==0){
-    return false;
-  }
-    for(let temp of itemCount){
-      if(temp.code==tempId.code){
-        temp.number=temp.number+tempId.number;
-        return true;
+function containId(tempId, typeAndNumberOfItems) {
+  let isContain=false;
+  if (typeAndNumberOfItems.length !== 0) {
+    for (let temp of typeAndNumberOfItems) {
+      if (temp.code == tempId.code) {
+        temp.number = temp.number + tempId.number;
+        isContain=true;
       }
-
-    } return false;
+  }
+  }
+  return isContain;
 }

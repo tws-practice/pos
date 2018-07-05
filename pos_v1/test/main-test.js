@@ -1,5 +1,45 @@
 'use strict';
 
+
+describe('Function calculatingTypeAndNumber test',()=> {
+  it('it should have same typeAndNumberOfItems', () => {
+
+    const tags = [
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000003-2.5',
+      'ITEM000005',
+      'ITEM000005-2',
+    ];
+
+    let typeAndNumberOfItems = calculatingTypeAndNumber(tags);
+    const result=[
+      {code: "ITEM000001", number: 5},
+    {code: "ITEM000003", number: 2.5},
+      {code: "ITEM000005", number: 3}
+  ];
+    expect(typeAndNumberOfItems).toEqual(result);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 describe('pos', () => {
 
   it('should print text', () => {
