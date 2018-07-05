@@ -31,3 +31,30 @@ describe('pos', () => {
    expect(console.log).toHaveBeenCalledWith(expectText);
   });
 });
+
+
+describe('BuildCodeAndNumArray check', () => {
+
+  it('check return BuildCodeAndNumArray', () => {
+
+    const tags = [
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000003-2.5',
+      'ITEM000005',
+      'ITEM000005-2',
+    ];
+
+    const codeAndNumArrayCheck =[{code:'ITEM000001',num:5},{code:'ITEM000003',num:2.5},{code:'ITEM000005',num:3}];
+
+    spyOn(console, 'log');
+
+    let codeAndNumArray = BuildCodeAndNumArray(tags);
+    let codeAndNumArrayToJson = JSON.stringify(codeAndNumArray);
+    expect(JSON.stringify(codeAndNumArrayCheck)).toBe(codeAndNumArrayToJson);
+  });
+});
+
