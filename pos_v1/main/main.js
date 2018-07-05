@@ -85,7 +85,7 @@ function createReceipt(itemsPriceInfo) {
   let str = '';
   str += '***<没钱赚商店>收据***\n';
   itemsPriceInfo.forEach(item => {
-    str += '名称：' + item.name + '，数量：' + item.count + item.unit + '，单价：' + item.price.toFixed(2) + '(元)，小计：' + item.total + '(元)\n';
+    str += '名称：' + item.name + '，数量：' + item.count + item.unit + '，单价：' + item.price.toFixed(2) + '(元)，小计：' + item.total.toFixed + '(元)\n';
     total += parseFloat(item.total);
   });
 
