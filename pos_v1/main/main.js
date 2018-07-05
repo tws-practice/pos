@@ -3,8 +3,8 @@
 function printReceipt(tags) {
   //计算数量
   let typeAndNumberOfItems = calculatingTypeAndNumber(tags);
-  const deatil = loadAllItems();
-  typeAndNumberOfItems = getDeatil(typeAndNumberOfItems, deatil);
+  const allItems = loadAllItems();
+  const itemsDetails = getItemsDetails(typeAndNumberOfItems, allItems);
   const loadPromotion = loadPromotions();
   typeAndNumberOfItems = getPromotion(typeAndNumberOfItems, loadPromotion);
   typeAndNumberOfItems = countKind(typeAndNumberOfItems);
@@ -31,18 +31,18 @@ function calculatingTypeAndNumber(tags) {
   return typeAndNumberOfItems;
 }
 
-function getDeatil(item, deatil) {
+function getItemsDetails(typeAndNumberOfItems, allItems) {
   // for(let det of deatil)
-  for (let tempitem of item) {
-    for (let det of deatil) {
-      if (tempitem.code == det.barcode) {
-        tempitem.name = det.name;
-        tempitem.unit = det.unit;
-        tempitem.price = det.price;
+  for (let typeAndNumberOfItem of typeAndNumberOfItems) {
+    for (let item of allItems) {
+      if (typeAndNumberOfItem.code == item.barcode) {
+        typeAndNumberOfItem.name = item.name;
+        typeAndNumberOfItem.unit = item.unit;
+        typeAndNumberOfItem.price = item.price;
       }
     }
   }
-  return item;
+  return typeAndNumberOfItems;
 }
 
 function getPromotion(item, loadPromotion) {
