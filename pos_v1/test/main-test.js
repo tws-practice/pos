@@ -31,3 +31,53 @@ describe('pos', () => {
     expect(console.log).toHaveBeenCalledWith(expectText);
   });
 });
+
+describe('calculate the goods count', () => {
+  it('should return array', () => {
+    const tags = [
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000001',
+      'ITEM000003-2.5',
+      'ITEM000005',
+      'ITEM000005-2',
+    ];
+    const expectText = [{
+        barcode: 'ITEM000001',
+        count: 5
+      },
+      {
+        barcode: 'ITEM000003',
+        count: 2.5
+      },
+      {
+        barcode: 'ITEM000005',
+        count: 3
+      }
+    ];
+    expect(expectText).toEqual(calculateCount(tags));
+  })
+})
+
+describe('calculate the good total price', () => {
+  it('should return array', () => {
+    const good = {
+      barcode: 'ITEM000003',
+      count: 2.5
+    };
+    const price = 15;
+    const expectText = 37.5.toFixed(2);
+    expect(expectText).toEqual(calculateTotal(good, price));
+  })
+})
+
+describe('get the good barcode without amount', () => {
+    it('should return array', () => {
+      const barcode = 'ITEM000003-2.5';
+      const expectText = 'ITEM000003';
+      expect(expectText).toEqual(getBarcode(barcode));
+    })
+  })
+
