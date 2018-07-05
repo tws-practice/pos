@@ -8,7 +8,7 @@ function printReceipt(tags) {
   const promotions = loadPromotions();
   itemsDetails = getPromotion(itemsDetails, promotions);
   itemsDetails = countItem(itemsDetails);
-  itemsDetails = countAll(itemsDetails);
+  itemsDetails = countAllItems(itemsDetails);
   const final = print(itemsDetails);
   console.log(final);
 }
@@ -73,17 +73,17 @@ function countItem(itemsDetails) {
   return itemsDetails;
 }
 
-function countAll(itemsDetails) {
+function countAllItems(itemsDetails) {
   let count = 0;
-  let countfa = 0;
+  let countfanal = 0;
   for (let it of itemsDetails) {
     count = count + it.count;
-    countfa = it.number * it.price + countfa;
+    countfanal = it.number * it.price + countfanal;
   }
 
   itemsDetails.push({
     finalcount: count,
-    finalcon: countfa - count
+    saved: countfanal - count
   })
   return itemsDetails;
 }
@@ -96,7 +96,7 @@ function print(item) {
   }
   final = final + '----------------------\n';
   final = final + '总计：' + parseFloat(item[item.length - 1].finalcount).toFixed(2) + '(元)' + '\n';
-  final = final + '节省：' + item[item.length - 1].finalcon.toFixed(2) + '(元)' + '\n';
+  final = final + '节省：' + item[item.length - 1].saved.toFixed(2) + '(元)' + '\n';
   final = final + '**********************';
 
   final = `${final}`;

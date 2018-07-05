@@ -92,7 +92,30 @@ describe('Function countItem test',()=> {
   });
 });
 
-
+describe('Function countAllItem test',()=> {
+  it('it should have same ItemsDetails', () => {
+    const items=[
+      {code: "ITEM000001", number: 5, name: "雪碧", unit: "瓶", price: 3,status:'Promotion',count: 12}
+      ,
+      {code: "ITEM000003", number: 2.5, name: "荔枝", unit: "斤", price: 15,count: 37.5}
+      ,
+      {code: "ITEM000005", number: 3, name: "方便面", unit: "袋", price: 4.5,status:'Promotion',count: 9}
+    ]
+    const   itemsDetails = countAllItems(items);
+    const result=[
+      {code: "ITEM000001", number: 5, name: "雪碧", unit: "瓶", price: 3,status:'Promotion',count: 12}
+      ,
+      {code: "ITEM000003", number: 2.5, name: "荔枝", unit: "斤", price: 15,count: 37.5}
+      ,
+      {code: "ITEM000005", number: 3, name: "方便面", unit: "袋", price: 4.5,status:'Promotion',count: 9},
+      {
+        finalcount: 58.5,
+        saved: 7.5
+      }
+    ]
+    expect(itemsDetails).toEqual(result);
+  });
+});
 
 
 
