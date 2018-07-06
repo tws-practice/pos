@@ -49,14 +49,7 @@ function buildReceiptArray(allGoodItems, codeAndNumObject) {
       if (allGoodItems[i].barcode !== codeAndNumObject[j].code) continue;
       const {name, unit, price} = allGoodItems[i];
       const {code, num} = codeAndNumObject[j];
-      receiptArray.push({
-        barcode: code,
-        name,
-        unit,
-        price,
-        num
-      })
-
+      receiptArray.push({code, name, unit, price, num})
     }
   }
   return receiptArray;
