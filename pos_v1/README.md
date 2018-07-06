@@ -1,5 +1,8 @@
 # POS Project v1
 
+fix_b1
+fix_b222222
+
 POS收银机 版本：v1
 
 ## 教学目标
