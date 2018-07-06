@@ -33,7 +33,7 @@ describe('pos', () => {
 });
 
 
-describe('BuildCodeAndNumArray check', () => {
+describe('buildCodeAndNumArray check', () => {
 
   it('check return codeAndNumArray', () => {
 
@@ -53,16 +53,15 @@ describe('BuildCodeAndNumArray check', () => {
       num: 3
     }];
 
-    spyOn(console, 'log');
 
-    let codeAndNumArray = BuildCodeAndNumArray(tags);
+    let codeAndNumArray = buildCodeAndNumArray(tags);
     let codeAndNumArrayToJson = JSON.stringify(codeAndNumArray);
     expect(codeAndNumArrayToJson).toBe(JSON.stringify(codeAndNumArrayCheck));
   });
 });
 
 
-describe('getReceiptArray check', () => {
+describe('buildReceiptArray check', () => {
 
   it('check return recieptArray', () => {
 
@@ -112,9 +111,8 @@ describe('getReceiptArray check', () => {
       {code: 'ITEM000001', num: 5},
       {code: 'ITEM000003', num: 2.5},
       {code: 'ITEM000005', num: 3}];
-    spyOn(console, 'log');
 
-    let recieptArray = getReceiptArray(allGoodItemArray, codeAndNumArray);
+    let recieptArray = buildReceiptArray(allGoodItemArray, codeAndNumArray);
     let recieptArrayToJson = JSON.stringify(recieptArray);
     expect(recieptArrayToJson).toBe(JSON.stringify(recieptArrayCheck));
   });
@@ -132,7 +130,6 @@ describe('getReceiptPreSum check', () => {
       {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
       {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
 
-    spyOn(console, 'log');
 
     let noDiscountTotalPrice = getReceiptPreSum(recieptArray);
     expect(noDiscountTotalPrice).toBe(noDiscountTotalPriceCheck);
@@ -160,10 +157,9 @@ describe('getReceiptInfo check', () => {
       {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
       {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
     const recieptArrayCheck = [
-      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 15},
+      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 12},
       {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5, sum: 37.5},
-      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 13.5}];
-    spyOn(console, 'log');
+      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 9}];
 
     let recieptArray = getReceiptInfo(recieptArray1, promotion);
     let recieptArrayToJson = JSON.stringify(recieptArray);
@@ -172,18 +168,17 @@ describe('getReceiptInfo check', () => {
 });
 
 
-describe('getReceiptInfo check', () => {
+describe('getReceiptPoSum check', () => {
 
   it('check return discountTotalPrice', () => {
 
-    const discountTotalPriceCheck = 66;
+    const discountTotalPriceCheck = 58.5;
 
     const recieptArray = [
-      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 15},
+      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 12},
       {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5, sum: 37.5},
-      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 13.5}];
+      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 9}];
 
-    spyOn(console, 'log');
 
     let discountTotalPrice = getReceiptPoSum(recieptArray);
     expect(discountTotalPrice).toBe(discountTotalPriceCheck);
