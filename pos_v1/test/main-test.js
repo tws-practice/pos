@@ -48,10 +48,11 @@ describe('buildCodeAndNumArray check', () => {
       'ITEM000005-2',
     ];
 
-    const codeAndNumArrayCheck = [{code: 'ITEM000001', num: 5}, {code: 'ITEM000003', num: 2.5}, {
-      code: 'ITEM000005',
-      num: 3
-    }];
+    const codeAndNumArrayCheck = [
+      {code: 'ITEM000001', num: 5},
+      {code: 'ITEM000003', num: 2.5},
+      {code: 'ITEM000005',num: 3
+      }];
 
 
     let codeAndNumArray = buildCodeAndNumArray(tags);
@@ -104,9 +105,9 @@ describe('buildReceiptArray check', () => {
       }
     ];
     const recieptArrayCheck = [
-      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5},
-      {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
-      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
+      {code: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5},
+      {code: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
+      {code: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
     const codeAndNumArray = [
       {code: 'ITEM000001', num: 5},
       {code: 'ITEM000003', num: 2.5},
@@ -153,13 +154,13 @@ describe('getReceiptInfo check', () => {
         }
       ];
     const recieptArray1 = [
-      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5},
-      {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
-      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
+      {code: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5},
+      {code: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5},
+      {code: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3}];
     const recieptArrayCheck = [
-      {barcode: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 12},
-      {barcode: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5, sum: 37.5},
-      {barcode: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 9}];
+      {code: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3, num: 5, sum: 12},
+      {code: 'ITEM000003', name: '荔枝', unit: '斤', price: 15, num: 2.5, sum: 37.5},
+      {code: 'ITEM000005', name: '方便面', unit: '袋', price: 4.5, num: 3, sum: 9}];
 
     let recieptArray = getReceiptInfo(recieptArray1, promotion);
     let recieptArrayToJson = JSON.stringify(recieptArray);
